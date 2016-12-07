@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% set title = "Paste" %}
+
+{% block styles %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='pastie.css') }}" />
+{% endblock %}
+
+{% block content %}
+  {% if paste_lexer is none %}
+    {% highlight lineno='inline' -%}
+      {{ paste_content }}
+    {% endhighlight %}
+  {% else %}
+    {% highlight lang=paste_lexer, lineno='inline' -%}
+      {{ paste_content }}
+    {% endhighlight %}
+  {% endif %}
+  <div>  
+    {% set paste_url = url_for('root.show_paste', paste_id=paste_id, _external=True) %}
+    <a href="{{ paste_url }}">{{ paste_url }}</a>
+    <a href="{{ url_for('root.raw', paste_id=paste_id) }}">Raw</a>
+  </div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% set title = "About" %}
+
+{% block content %}
+    <p>{{ config['PYCNO_SITE_TITLE'] }} is a paste service, that doesn't track you!</p>
+    <p>Due to the nature of this service, there are still some information we must store:</p>
+    <ul>
+      <li>The <b>Content</b> of the paste</li>
+      <li>The <b>ID</b> of the paste</li>
+      <li>The <b>expire date</b> of the paste</li>
+      <li>The <b>syntax lexer</b> of the paste</li>
+    </ul>
+    <p><b>{{ config['PYCNO_SITE_TITLE'] }} Version:</b> {{ PYCNO_VERSION }}</p>
+{% endblock %}
