@@ -35,7 +35,7 @@ def create_app():
 
     @app.context_processor
     def inject_version():
-        return dict(PYCNO_VERSION=pkg_resources.require('PYCNO')[0].version)
+        return dict(PYCNO_VERSION=pkg_resources.require('pycno')[0].version)
 
     return app
 
