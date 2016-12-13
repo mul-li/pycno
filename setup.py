@@ -10,6 +10,6 @@ setup(
         'Flask==0.11.1',
         'Flask-WTF==0.13.1',
         'Pygments==2.1.3',
-        'mulli==0.0.1'
+        'mulli==0.0.2'
     },
 )

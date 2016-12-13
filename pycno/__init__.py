@@ -25,6 +25,7 @@ def create_app():
     _default_secret_key = base64.b64encode(os.urandom(32)).decode('utf-8')
     app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', _default_secret_key)
     app.config.setdefault('PYCNO_SITE_TITLE', 'Pycno')
+    app.config.setdefault('DATABASE', 'pycno.pickle')
 
     app.url_map.converters['hex'] = HexConverter
     app.jinja_env.add_extension(HighlightExtension)

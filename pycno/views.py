@@ -1,5 +1,7 @@
 from flask import Blueprint, render_template, redirect, url_for, make_response, abort
 
+import mulli
+
 from . import forms
 from . import utils
 
@@ -12,7 +14,7 @@ def index():
 
     if form.validate_on_submit():
         try:
-            paste_id = utils.create_id(form.text.data)
+            paste_id = mulli.create_id(form.text.data)
         except ValueError:
             abort(500)
 
@@ -32,7 +34,7 @@ def advanced():
 
     if form.validate_on_submit():
         try:
-            paste_id = utils.create_id(form.text.data)
+            paste_id = mulli.create_id(form.text.data)
         except ValueError:
             abort(500)
 
@@ -49,26 +51,29 @@ def advanced():
 @root_page.route('/<hex:paste_id>')
 def show_paste(paste_id):
     try:
-        paste_content = utils.load_paste(paste_id)
+        paste = mulli.load_entry(paste_id)
     except KeyError:
         return render_template('not_found.html'), 404
     except ValueError:
-        utils.remove_paste(id)
+        utils.remove_paste(paste_id)
         return render_template('not_found.html'), 404
     else:
-        paste_lexer = utils.load_lexer(paste_id)
+        paste_content = paste['content']
+        paste_lexer = paste['lexer']
     return render_template('paste.html', paste_id=paste_id, paste_content=paste_content, paste_lexer=paste_lexer)
 
 
 @root_page.route('/raw/<hex:paste_id>')
 def raw(paste_id):
     try:
-        paste_content = utils.load_paste(paste_id)
+        paste = mulli.load_entry(paste_id)
     except KeyError:
         return render_template('not_found.html'), 404
     except ValueError:
-        utils.remove_paste(id)
+        utils.remove_paste(paste_id)
         return render_template('not_found.html'), 404
+    else:
+        paste_content = paste['content']
     response = make_response(paste_content)
     response.mimetype = 'text/plain'
     return response
