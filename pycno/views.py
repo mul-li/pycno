@@ -55,7 +55,7 @@ def show_paste(paste_id):
     except KeyError:
         return render_template('not_found.html'), 404
     except ValueError:
-        utils.remove_paste(paste_id)
+        mulli.remove_entry(paste_id)
         return render_template('not_found.html'), 404
     else:
         paste_content = paste['content']
@@ -70,7 +70,7 @@ def raw(paste_id):
     except KeyError:
         return render_template('not_found.html'), 404
     except ValueError:
-        utils.remove_paste(paste_id)
+        mulli.remove_entry(paste_id)
         return render_template('not_found.html'), 404
     else:
         paste_content = paste['content']
