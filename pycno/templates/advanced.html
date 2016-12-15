@@ -5,7 +5,7 @@
 {% block content %}
   <form method="POST" action="/advanced">
     {{ form.hidden_tag() }}
-    {{ form.text(required=True, rows=10) }}
+    {{ form.text(required=True, rows=10, placeholder='Your content here…')}}
     {{ form.validity(required=True) }}
     {{ form.syntax(required=True) }}
     {{ form.submit() }}
