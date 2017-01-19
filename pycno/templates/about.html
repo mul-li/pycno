@@ -11,5 +11,8 @@
       <li>The <b>expire date</b> of the paste</li>
       <li>The <b>syntax lexer</b> of the paste</li>
     </ul>
+    {% if config['PYCNO_ONION_ADDRESS'] %}
+      <p><b>{{ config['PYCNO_SITE_TITLE'] }} Onion Address:</b> {{ config['PYCNO_ONION_ADDRESS'] }}</p>
+    {% endif %}
     <p><b>{{ config['PYCNO_SITE_TITLE'] }} Version:</b> {{ PYCNO_VERSION }}</p>
 {% endblock %}
