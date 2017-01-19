@@ -1,4 +1,4 @@
 Flask
 Flask-WTF
 Pygments
-mulli
+mulli==0.0.5
