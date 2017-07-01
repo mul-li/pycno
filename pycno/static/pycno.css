@@ -1,0 +1,22 @@
+.highlight + div {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1vh;
+}
+
+pre {
+    font-family: 'Fira Mono', monospace;
+}
+
+.highlight {
+    text-align: left;
+    overflow: auto;
+}
+
+.lineno {
+    display: inline-block;
+    border-right: 1px solid black;
+    margin-right: 0.5vw;
+    padding-right: 0.5vw;
+    width: 2vw;
+}
